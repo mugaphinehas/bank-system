@@ -1,0 +1,48 @@
+class Bank:
+    def __init__(self, account_number, customer_name, balance=200):
+        self.account_number = account_number
+        self.customer_name = customer_name
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            return True
+        else:
+            print("Invalid deposit amount.")
+            return False
+
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+            return True
+        else:
+            print("Insufficient balance.")
+            return False
+
+    def display_customer_details(self):
+        print(f"Account Number: {self.account_number}")
+        print(f"Customer Name: {self.customer_name}")
+        print(f"Balance: {self.balance}")
+
+# Initialize the bank account with customer name as 'User 1' and account no as 'bscit05'
+bank = Bank(account_number='bscit05', customer_name='User 1')
+
+# Display customer details
+bank.display_customer_details()
+
+# Ask user for amount to deposit
+amount_to_deposit = float(input("Enter amount to deposit: "))
+
+# Deposit the amount
+if bank.deposit(amount_to_deposit):
+    print(f"Amount {amount_to_deposit} deposited successfully.")
+    bank.display_customer_details()
+
+# Ask user for amount to withdraw
+amount_to_withdraw = float(input("Enter amount to withdraw: "))
+
+# Withdraw the amount
+if bank.withdraw(amount_to_withdraw):
+    print(f"Amount {amount_to_withdraw} withdrawn successfully.")
+    bank.display_customer_details()
